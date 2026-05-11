@@ -1,0 +1,635 @@
+
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>林宇哲 Y.J. Lin | 個人履歷網站</title>
+  <style>
+    /* =====================================================
+       林宇哲個人履歷網站 - 專業優化版
+       ===================================================== */
+
+    :root {
+      --bg: #fff7ed;
+      --paper: #ffffff;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --brand: #ea580c;
+      --brand-soft: #ffedd5;
+      --green: #166534;
+      --green-soft: #dcfce7;
+      --border: #fed7aa;
+      --shadow: 0 16px 40px rgba(124, 45, 18, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Noto Sans TC", "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, #fed7aa 0, transparent 300px),
+        linear-gradient(180deg, #fff7ed 0%, #ffffff 55%, #fff7ed 100%);
+      color: var(--ink);
+      line-height: 1.75;
+    }
+
+    a { color: inherit; text-decoration: none; transition: 0.2s; }
+
+    .page {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      padding: 22px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .site-name {
+      font-weight: 900;
+      letter-spacing: 0.04em;
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .nav a {
+      padding: 8px 12px;
+      border-radius: 999px;
+    }
+
+    .nav a:hover {
+      background: var(--brand-soft);
+      color: var(--brand);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 26px;
+      align-items: stretch;
+      padding: 28px 0 56px;
+    }
+
+    .identity-card,
+    .intro-card {
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .identity-card {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 430px;
+    }
+
+    .avatar {
+      width: 86px;
+      height: 86px;
+      border-radius: 28px;
+      background: var(--brand);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      font-size: 36px;
+      font-weight: 900;
+      margin-bottom: 22px;
+    }
+
+    .label {
+      display: inline-flex;
+      width: fit-content;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      color: var(--brand);
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(42px, 7vw, 78px);
+      line-height: 0.98;
+      margin: 0 0 16px;
+      letter-spacing: -0.06em;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 18px;
+      margin: 0;
+    }
+
+    .quick-info {
+      display: grid;
+      gap: 10px;
+      margin-top: 26px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .quick-info span {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: #fff7ed;
+      border: 1px solid var(--border);
+    }
+
+    .intro-card {
+      padding: 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .intro-card h2 {
+      margin: 0 0 14px;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height: 1.15;
+      letter-spacing: -0.04em;
+    }
+
+    .intro-card p {
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .button {
+      padding: 12px 18px;
+      border-radius: 16px;
+      font-weight: 800;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--ink);
+    }
+
+    .button.primary {
+      background: var(--brand);
+      border-color: var(--brand);
+      color: white;
+    }
+
+    section {
+      padding: 46px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      margin: 0;
+      letter-spacing: -0.04em;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid.two { grid-template-columns: repeat(2, 1fr); }
+    .grid.three { grid-template-columns: repeat(3, 1fr); }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(124, 45, 18, 0.06);
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .card p { margin: 0; color: var(--muted); }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .chip {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      color: var(--brand);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .project {
+      display: grid;
+      grid-template-columns: 90px 1fr;
+      gap: 18px;
+    }
+
+    .project-no {
+      width: 72px;
+      height: 72px;
+      border-radius: 24px;
+      display: grid;
+      place-items: center;
+      background: var(--brand-soft);
+      color: var(--brand);
+      font-size: 24px;
+      font-weight: 900;
+    }
+
+    .meta {
+      color: var(--brand);
+      font-size: 14px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .result {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: var(--green-soft);
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 16px;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .time {
+      color: var(--brand);
+      font-weight: 900;
+      font-size: 14px;
+      padding-top: 4px;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      background: var(--ink);
+      color: white;
+      border-radius: 30px;
+      padding: 30px;
+      margin-bottom: 40px;
+    }
+
+    .contact-box p { color: #d1d5db; margin: 0; }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .contact-links a {
+      background: rgba(255,255,255,0.12);
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .contact-links a:hover {
+      background: var(--brand);
+    }
+
+    footer {
+      color: var(--muted);
+      text-align: center;
+      padding: 28px 0 46px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 820px) {
+      .topbar,
+      .section-head,
+      .contact-box {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero,
+      .grid.two,
+      .grid.three,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .project,
+      .timeline-item {
+        grid-template-columns: 1fr;
+      }
+
+      .identity-card { min-height: auto; }
+      .contact-links { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <a class="site-name" href="#" id="siteName">林宇哲 Y.J. Lin｜Resume</a>
+      <nav class="nav">
+        <a href="#about">關於我</a>
+        <a href="#skills">技能</a>
+        <a href="#projects">作品成果</a>
+        <a href="#experience">相關經歷</a>
+        <a href="#contact">聯絡</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="identity-card">
+          <div>
+            <div class="avatar" id="avatarText">林</div>
+            <div class="label" id="profileBadge">海大資傳｜AI 應用研究</div>
+            <h1 id="profileName">林宇哲</h1>
+            <p class="subtitle" id="profileTitle">專注於生成式 AI、內容設計與數位轉型的跨域學習者</p>
+          </div>
+          <div class="quick-info" id="quickInfo"></div>
+        </div>
+
+        <div class="intro-card">
+          <h2 id="introHeadline">讓 AI 成為創作的加速器</h2>
+          <p id="introText">我是宇哲，目前就讀於國立海洋大學資訊傳播學系。我熱衷於研究 AI 工具如何提升學習效率與數位內容創作品質，並具備將技術轉化為實際專案企劃的能力。</p>
+          <div class="actions">
+            <a class="button primary" href="#projects">查看專案成果</a>
+            <a class="button" id="mailButton" href="mailto:yjlin.student@gmail.com">聯絡合作</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="section-head">
+          <h2>關於我</h2>
+          <p>結合資傳背景與 AI 視野，打造具影響力的數位內容。</p>
+        </div>
+        <div class="grid two" id="aboutGrid"></div>
+      </section>
+
+      <section id="skills">
+        <div class="section-head">
+          <h2>技能工具箱</h2>
+          <p>掌握主流 AI 生產力工具與數位設計技術。</p>
+        </div>
+        <div class="grid three" id="skillsGrid"></div>
+      </section>
+
+      <section id="projects">
+        <div class="section-head">
+          <h2>作品與成果</h2>
+          <p>從 AI 應用到行銷企劃，展現解決問題的實踐力。</p>
+        </div>
+        <div class="grid" id="projectsGrid"></div>
+      </section>
+
+      <section id="experience">
+        <div class="section-head">
+          <h2>相關經歷</h2>
+          <p>學術研究與校園實踐的成長軌跡。</p>
+        </div>
+        <div class="timeline" id="experienceTimeline"></div>
+      </section>
+
+      <section id="contact">
+        <div class="contact-box">
+          <div>
+            <h2 style="margin:0 0 8px;">聯絡我</h2>
+            <p id="contactNote">歡迎透過 Email、GitHub 或 LinkedIn 聯絡我。</p>
+          </div>
+          <div class="contact-links" id="contactLinks"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footerText">© 2025 林宇哲 Y.J. Lin｜Built with AI & Passion</footer>
+  </div>
+
+  <script>
+    const resumeData = {
+      profile: {
+        name: "林宇哲",
+        avatar: "林",
+        badge: "海大資傳｜AI 應用研究",
+        title: "專注於生成式 AI、內容設計與數位轉型的跨域學習者",
+        headline: "讓 AI 成為創作的加速器",
+        intro: "我是宇哲，目前就讀於國立海洋大學資訊傳播學系。我熱衷於研究 AI 工具如何提升學習效率與數位內容創作品質，並具備將技術轉化為實際專案企劃的能力。",
+        quickInfo: ["國立海洋大學 資訊傳播學系", "興趣：AI 應用、UI/UX、音樂、咖啡廳探店", "GitHub：yjlin-demo"]
+      },
+
+      about: [
+        {
+          title: "資傳系背景",
+          content: "熟悉數位內容傳播與資訊架構，具備將數據轉化為視覺敘事的能力。"
+        },
+        {
+          title: "AI 工具愛好者",
+          content: "深度研究 ChatGPT 與 Gemini 在工作流中的應用，能以此加速專案從發想到產出的過程。"
+        },
+        {
+          title: "學習目標",
+          content: "目前正朝著 AI 應用企劃、數位產品設計或資料分析方向發展，強化跨領域實踐力。"
+        },
+        {
+          title: "未來願景",
+          content: "希望結合資傳專業，推動 AI 賦能的創意內容與數位服務轉型。"
+        }
+      ],
+
+      skills: [
+        {
+          category: "AI 生產力",
+          items: ["ChatGPT", "Gemini", "Canva AI", "Notion AI"]
+        },
+        {
+          category: "設計與內容",
+          items: ["Canva", "Figma", "PowerPoint", "社群貼文設計"]
+        },
+        {
+          category: "基礎技術",
+          items: ["HTML / CSS", "GitHub Pages", "Google Sheets", "Excel"]
+        }
+      ],
+
+      projects: [
+        {
+          title: "AI 履歷網站製作",
+          role: "個人專案",
+          description: "使用 ChatGPT 協助整理履歷內容與重構代碼，並修改 HTML 模板完成響應式個人履歷網站。",
+          tools: ["ChatGPT", "HTML", "GitHub Pages"],
+          result: "成功建立可公開分享的個人作品集網址。"
+        },
+        {
+          title: "校園活動宣傳企劃",
+          role: "行銷課程小組專案",
+          description: "負責社群貼文設計與活動宣傳策略，協助提升校園活動曝光度。",
+          tools: ["Canva", "Instagram", "Google Forms"],
+          result: "活動報名人數顯著提升約 40%。"
+        },
+        {
+          title: "AI 學習助手研究",
+          role: "課堂研究專題",
+          description: "研究生成式 AI 對學生學習效率的影響，並分析學生對 AI 工具的使用行為。",
+          tools: ["Gemini", "Excel", "問卷分析"],
+          result: "完成深度課堂研究報告與發表。"
+        }
+      ],
+
+      experience: [
+        {
+          period: "2025",
+          title: "校內簡報競賽 佳作",
+          content: "將複雜數據轉化為具視覺張力的簡報內容，展現敘事力與設計美感。"
+        },
+        {
+          period: "2025",
+          title: "AI 與數位工具工作坊 學員",
+          content: "參與進階工作坊，深研最新生成式 AI 技術於專案管理的實務應用。"
+        },
+        {
+          period: "2024",
+          title: "系學會 美宣組",
+          content: "負責系上活動視覺設計與美感把關，累積團隊協作與品牌溝通經驗。"
+        }
+      ],
+
+      contact: {
+        email: "yjlin.student@gmail.com",
+        github: "https://github.com/yjlin-demo",
+        linkedin: "#", // 可自行填入 LinkedIn 連結
+        note: "如果您想了解更多我的作品或洽談合作，歡迎透過以下方式聯絡我。"
+      }
+    };
+
+    // 初始化渲染
+    document.title = `${resumeData.profile.name}｜AI 履歷網站`;
+    document.getElementById("siteName").textContent = `${resumeData.profile.name}｜Resume`;
+    document.getElementById("avatarText").textContent = resumeData.profile.avatar;
+    document.getElementById("profileBadge").textContent = resumeData.profile.badge;
+    document.getElementById("profileName").textContent = resumeData.profile.name;
+    document.getElementById("profileTitle").textContent = resumeData.profile.title;
+    document.getElementById("introHeadline").textContent = resumeData.profile.headline;
+    document.getElementById("introText").textContent = resumeData.profile.intro;
+    document.getElementById("mailButton").href = `mailto:${resumeData.contact.email}`;
+    document.getElementById("contactNote").textContent = resumeData.contact.note;
+
+    const quickInfo = document.getElementById("quickInfo");
+    resumeData.profile.quickInfo.forEach(info => {
+      quickInfo.innerHTML += `<span>${info}</span>`;
+    });
+
+    const aboutGrid = document.getElementById("aboutGrid");
+    resumeData.about.forEach(item => {
+      aboutGrid.innerHTML += `
+        <article class="card">
+          <h3>${item.title}</h3>
+          <p>${item.content}</p>
+        </article>
+      `;
+    });
+
+    const skillsGrid = document.getElementById("skillsGrid");
+    resumeData.skills.forEach(group => {
+      skillsGrid.innerHTML += `
+        <article class="card">
+          <h3>${group.category}</h3>
+          <div class="chips">
+            ${group.items.map(item => `<span class="chip">${item}</span>`).join("")}
+          </div>
+        </article>
+      `;
+    });
+
+    const projectsGrid = document.getElementById("projectsGrid");
+    resumeData.projects.forEach((project, index) => {
+      const no = String(index + 1).padStart(2, "0");
+      projectsGrid.innerHTML += `
+        <article class="card project">
+          <div class="project-no">${no}</div>
+          <div>
+            <div class="meta">${project.role}</div>
+            <h3>${project.title}</h3>
+            <p>${project.description}</p>
+            <div class="chips">
+              ${project.tools.map(tool => `<span class="chip">${tool}</span>`).join("")}
+            </div>
+            <div class="result">成果：${project.result}</div>
+          </div>
+        </article>
+      `;
+    });
+
+    const experienceTimeline = document.getElementById("experienceTimeline");
+    resumeData.experience.forEach(exp => {
+      experienceTimeline.innerHTML += `
+        <article class="timeline-item">
+          <div class="time">${exp.period}</div>
+          <div class="card">
+            <h3>${exp.title}</h3>
+            <p>${exp.content}</p>
+          </div>
+        </article>
+      `;
+    });
+
+    const contactLinks = document.getElementById("contactLinks");
+    contactLinks.innerHTML = `
+      <a href="mailto:${resumeData.contact.email}">Email</a>
+      <a href="${resumeData.contact.github}" target="_blank">GitHub</a>
+      <a href="${resumeData.contact.linkedin}" target="_blank">LinkedIn</a>
+    `;
+  </script>
+</body>
+</html>
